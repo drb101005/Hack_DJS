@@ -1,0 +1,48 @@
+import type { Patient } from '../types'
+
+export const mockPatients: Patient[] = [
+  {
+    id: 'PAT-1001',
+    name: 'James Anderson',
+    age: 58,
+    gender: 'Male',
+    bloodGroup: 'O+',
+    phone: '+1 555-0142',
+    email: 'james.anderson@patient.demo',
+    condition: 'Cardiorespiratory monitoring',
+    status: 'monitoring',
+  },
+  {
+    id: 'PAT-1002',
+    name: 'Emily Carter',
+    age: 44,
+    gender: 'Female',
+    bloodGroup: 'A+',
+    phone: '+1 555-0188',
+    email: 'emily.carter@patient.demo',
+    condition: 'Neurological screening',
+    status: 'stable',
+  },
+  {
+    id: 'PAT-1003',
+    name: 'Michael Thompson',
+    age: 67,
+    gender: 'Male',
+    bloodGroup: 'B+',
+    phone: '+1 555-0194',
+    email: 'michael.thompson@patient.demo',
+    condition: 'Pulmonary evaluation',
+    status: 'monitoring',
+  },
+  {
+    id: 'PAT-1004',
+    name: 'Sophia Williams',
+    age: 36,
+    gender: 'Female',
+    bloodGroup: 'AB+',
+    phone: '+1 555-0131',
+    email: 'sophia.williams@patient.demo',
+    condition: 'Routine screening',
+    status: 'stable',
+  },
+]
