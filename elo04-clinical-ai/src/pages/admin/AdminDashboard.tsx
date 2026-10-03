@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import {
   Activity,
-  AlertTriangle,
   Brain,
   CheckCircle2,
   ChevronRight,
@@ -22,7 +21,6 @@ import {
   SlidersHorizontal,
   Users,
   UserRound,
-  XCircle,
 } from 'lucide-react'
 import { useDemo } from '../../context/DemoContext'
 import { mockPatients } from '../../data/patients'
