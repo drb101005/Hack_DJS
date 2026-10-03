@@ -11,6 +11,10 @@ import ClinicalReport from './pages/doctor/ClinicalReport'
 import PatientDashboard from './pages/patient/PatientDashboard'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import { DemoProvider, useDemo } from './context/DemoContext'
+import { ToastProvider } from './context/ToastContext'
+import ToastContainer from './components/ui/ToastContainer'
+import ModelRouter from './components/ai/ModelRouter'
+import Settings from './pages/doctor/Settings'
 import type { Patient } from './types'
 
 type Role = 'doctor' | 'patient' | 'admin'
@@ -26,9 +30,12 @@ type DoctorPage =
 
 function App() {
   return (
-    <DemoProvider>
-      <AppContent />
-    </DemoProvider>
+    <ToastProvider>
+      <DemoProvider>
+        <AppContent />
+        <ToastContainer />
+      </DemoProvider>
+    </ToastProvider>
   )
 }
 
@@ -142,21 +149,25 @@ function AppContent() {
         )}
 
         {doctorPage === 'ai-analysis' && (
-          <AIAnalysis
-            patient={selectedPatient}
-            caseId={activeCaseId}
-            onContinue={() => {
-              if (activeCaseId) {
-                addAuditEvent(
-                  'AI Analysis',
-                  activeCaseId,
-                  'Completed',
-                )
-              }
+          <div className="space-y-6">
+            <AIAnalysis
+              patient={selectedPatient}
+              caseId={activeCaseId}
+              onContinue={() => {
+                if (activeCaseId) {
+                  addAuditEvent(
+                    'AI Analysis',
+                    activeCaseId,
+                    'Completed',
+                  )
+                }
 
-              setDoctorPage('rag')
-            }}
-          />
+                setDoctorPage('rag')
+              }}
+            />
+
+            <ModelRouter running />
+          </div>
         )}
 
         {doctorPage === 'rag' && (
@@ -189,12 +200,7 @@ function AppContent() {
           />
         )}
 
-        {doctorPage === 'settings' && (
-          <Placeholder
-            title="Settings"
-            description="System and clinical workspace settings."
-          />
-        )}
+        {doctorPage === 'settings' && <Settings />}
       </DoctorLayout>
     )
   }
@@ -214,30 +220,5 @@ function AppContent() {
   )
 }
 
-function Placeholder({
-  title,
-  description,
-}: {
-  title: string
-  description: string
-}) {
-  return (
-    <div className="min-h-[60vh] flex items-center justify-center">
-      <div className="text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
-          Module
-        </p>
-
-        <h1 className="text-2xl font-semibold text-white mt-2">
-          {title}
-        </h1>
-
-        <p className="text-sm text-gray-500 mt-2">
-          {description}
-        </p>
-      </div>
-    </div>
-  )
-}
 
 export default App
