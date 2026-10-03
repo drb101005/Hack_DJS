@@ -3,6 +3,15 @@ import Login from './pages/auth/Login'
 import DoctorLayout from './layouts/DoctorLayout'
 import DoctorOverview from './pages/doctor/Overview'
 import Patients from './pages/doctor/Patients'
+import PatientProfile from './pages/doctor/PatientProfile'
+import NewCase from './pages/doctor/NewCase'
+import AIAnalysis from './pages/doctor/AIAnalysis'
+import RAGEvidence from './pages/doctor/RAGEvidence'
+import ClinicalReport from './pages/doctor/ClinicalReport'
+import PatientDashboard from './pages/patient/PatientDashboard'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import { DemoProvider, useDemo } from './context/DemoContext'
+import type { Patient } from './types'
 
 type Role = 'doctor' | 'patient' | 'admin'
 
@@ -16,94 +25,219 @@ type DoctorPage =
   | 'settings'
 
 function App() {
-  const [role, setRole] = useState<Role | null>(null)
-  const [doctorPage, setDoctorPage] = useState<DoctorPage>('overview')
+  return (
+    <DemoProvider>
+      <AppContent />
+    </DemoProvider>
+  )
+}
 
-  // Show login page when no user is logged in
+function AppContent() {
+  const [role, setRole] = useState<Role | null>(null)
+
+  const [doctorPage, setDoctorPage] =
+    useState<DoctorPage>('overview')
+
+  const [selectedPatient, setSelectedPatient] =
+    useState<Patient | null>(null)
+
+  const [activeCaseId, setActiveCaseId] =
+    useState<string | null>(null)
+
+  const { createCase, approveCase, addAuditEvent } =
+    useDemo()
+
   if (!role) {
     return <Login onLogin={setRole} />
   }
 
-  // Doctor portal
+  const logout = () => {
+    setRole(null)
+    setDoctorPage('overview')
+    setSelectedPatient(null)
+    setActiveCaseId(null)
+  }
+
   if (role === 'doctor') {
     return (
       <DoctorLayout
         currentPage={doctorPage}
-        onNavigate={setDoctorPage}
-        onLogout={() => {
-          setRole(null)
-          setDoctorPage('overview')
+        onNavigate={(page) => {
+          setDoctorPage(page)
+
+          if (
+            page !== 'patients' &&
+            page !== 'new-case' &&
+            page !== 'ai-analysis' &&
+            page !== 'rag' &&
+            page !== 'reports'
+          ) {
+            setSelectedPatient(null)
+          }
         }}
+        onLogout={logout}
       >
         {doctorPage === 'overview' && (
           <DoctorOverview />
         )}
 
-        {doctorPage === 'patients' && (
+        {doctorPage === 'patients' && !selectedPatient && (
           <Patients
             onOpenPatient={(patient) => {
-              console.log('Selected patient:', patient)
+              setSelectedPatient(patient)
+
+              addAuditEvent(
+                'Patient Record',
+                patient.id,
+                'Accessed',
+              )
             }}
           />
         )}
 
-        {doctorPage !== 'overview' &&
-          doctorPage !== 'patients' && (
-            <div className="min-h-[60vh] flex items-center justify-center px-6">
-              <div className="text-center">
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-400 mb-3">
-                  Module
-                </p>
+        {doctorPage === 'patients' && selectedPatient && (
+          <PatientProfile
+            patient={selectedPatient}
+            onBack={() => {
+              setSelectedPatient(null)
+            }}
+            onStartScreening={(patient) => {
+              setSelectedPatient(patient)
+              setDoctorPage('new-case')
 
-                <h1 className="text-2xl font-semibold text-white">
-                  {doctorPage === 'new-case' && 'New Case Screening'}
-                  {doctorPage === 'ai-analysis' && 'AI Analysis'}
-                  {doctorPage === 'rag' && 'RAG & Evidence'}
-                  {doctorPage === 'reports' && 'Clinical Reports'}
-                  {doctorPage === 'settings' && 'Settings'}
-                </h1>
+              addAuditEvent(
+                'Screening Started',
+                patient.id,
+                'Accessed',
+              )
+            }}
+          />
+        )}
 
-                <p className="text-sm text-gray-500 mt-2">
-                  This module will be implemented next.
-                </p>
-              </div>
-            </div>
-          )}
+        {doctorPage === 'new-case' && (
+          <NewCase
+            selectedPatient={selectedPatient}
+            onBack={() => {
+              setDoctorPage(
+                selectedPatient
+                  ? 'patients'
+                  : 'overview',
+              )
+            }}
+            onCaseCreated={(caseId) => {
+              const generatedCase = createCase(
+                selectedPatient?.id ?? 'PAT-1001',
+                selectedPatient?.name ??
+                  'James Anderson',
+                ['X-Ray', 'Clinical Text'],
+              )
+
+              setActiveCaseId(
+                generatedCase || caseId,
+              )
+
+              setDoctorPage('ai-analysis')
+            }}
+          />
+        )}
+
+        {doctorPage === 'ai-analysis' && (
+          <AIAnalysis
+            patient={selectedPatient}
+            caseId={activeCaseId}
+            onContinue={() => {
+              if (activeCaseId) {
+                addAuditEvent(
+                  'AI Analysis',
+                  activeCaseId,
+                  'Completed',
+                )
+              }
+
+              setDoctorPage('rag')
+            }}
+          />
+        )}
+
+        {doctorPage === 'rag' && (
+          <RAGEvidence
+            patient={selectedPatient}
+            caseId={activeCaseId}
+            onContinue={() => {
+              if (activeCaseId) {
+                addAuditEvent(
+                  'RAG Retrieval',
+                  activeCaseId,
+                  'Completed',
+                )
+              }
+
+              setDoctorPage('reports')
+            }}
+          />
+        )}
+
+        {doctorPage === 'reports' && (
+          <ClinicalReport
+            patient={selectedPatient}
+            caseId={activeCaseId}
+            onApproved={() => {
+              if (activeCaseId) {
+                approveCase(activeCaseId)
+              }
+            }}
+          />
+        )}
+
+        {doctorPage === 'settings' && (
+          <Placeholder
+            title="Settings"
+            description="System and clinical workspace settings."
+          />
+        )}
       </DoctorLayout>
     )
   }
 
-  // Patient/Admin portal placeholder
+  if (role === 'patient') {
+    return (
+      <PatientDashboard
+        onLogout={logout}
+      />
+    )
+  }
+
   return (
-    <div className="min-h-screen bg-[#070b14] text-white flex items-center justify-center px-6">
+    <AdminDashboard
+      onLogout={logout}
+    />
+  )
+}
+
+function Placeholder({
+  title,
+  description,
+}: {
+  title: string
+  description: string
+}) {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
       <div className="text-center">
-        <p className="text-cyan-400 text-xs uppercase tracking-[0.2em] mb-3">
-          {role} portal
+        <p className="text-xs uppercase tracking-[0.2em] text-cyan-400">
+          Module
         </p>
 
-        <h1 className="text-3xl font-semibold">
-          Coming next
+        <h1 className="text-2xl font-semibold text-white mt-2">
+          {title}
         </h1>
 
-        <p className="text-gray-500 mt-2">
-          This role will be built after the Doctor platform.
+        <p className="text-sm text-gray-500 mt-2">
+          {description}
         </p>
-
-        <button
-          type="button"
-          onClick={() => {
-            setRole(null)
-            setDoctorPage('overview')
-          }}
-          className="mt-6 px-5 py-2.5 rounded-xl border border-white/10 text-gray-300 hover:bg-white/5 transition"
-        >
-          Sign out
-        </button>
       </div>
     </div>
   )
 }
 
 export default App
-
-
