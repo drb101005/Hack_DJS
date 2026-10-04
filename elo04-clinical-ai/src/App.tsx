@@ -138,7 +138,7 @@ function AppContent() {
               const generatedCase = createCase(
                 selectedPatient?.id ?? 'PAT-1001',
                 selectedPatient?.name ??
-                  'James Anderson',
+                  'Ram Sharma',
                 modalities,
               )
 
@@ -159,10 +159,24 @@ function AppContent() {
               caseId={activeCaseId}
               modalities={activeModalities}
               onAnalysisStarted={() => {
-                if (activeCaseId) addAuditEvent('AI Analysis Started', activeCaseId, 'Running', 'AI Orchestrator')
+                if (activeCaseId) {
+                  addAuditEvent(
+                    'AI Analysis Started',
+                    activeCaseId,
+                    'Running',
+                    'AI Orchestrator',
+                  )
+                }
               }}
               onAnalysisCompleted={() => {
-                if (activeCaseId) addAuditEvent('AI Analysis Completed', activeCaseId, 'Completed', 'AI Orchestrator')
+                if (activeCaseId) {
+                  addAuditEvent(
+                    'AI Analysis Completed',
+                    activeCaseId,
+                    'Completed',
+                    'AI Orchestrator',
+                  )
+                }
               }}
               onContinue={() => {
                 if (activeCaseId) {
@@ -223,6 +237,5 @@ function AppContent() {
     />
   )
 }
-
 
 export default App

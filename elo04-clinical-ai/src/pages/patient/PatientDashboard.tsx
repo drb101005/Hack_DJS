@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+
 import {
   Activity,
   ArrowDownToLine,
@@ -209,7 +210,7 @@ export default function PatientDashboard({
             </div>
 
             <p className="mt-3 text-sm font-semibold text-[#172033]">
-              James Anderson
+              Ram Sharma
             </p>
 
             <p className="mt-1 text-[10px] text-[#7B8794]">
@@ -343,7 +344,7 @@ function Overview({
     <div className="space-y-6">
       <PageHeading
         eyebrow="Health Summary"
-        title="Good morning, James"
+        title="Good morning, Ram"
         description="Here is your current simulated health record and recent activity."
       />
 
@@ -601,7 +602,7 @@ function Reports({
               </p>
 
               <p className="mt-1 text-xs text-[#7B8794]">
-                CASE-2048 · James Anderson · 18 Mar 2026
+                CASE-2048 · Ram Sharma · 18 Mar 2026
               </p>
             </div>
 
@@ -762,10 +763,25 @@ function RecordModal({
         </div>
 
         <div className="space-y-4 p-5">
-          <InfoLine label="Record ID" value={record.id} />
-          <InfoLine label="Type" value={record.type} />
-          <InfoLine label="Date" value={record.date} />
-          <InfoLine label="Status" value={record.status} />
+          <InfoLine
+            label="Record ID"
+            value={record.id}
+          />
+
+          <InfoLine
+            label="Type"
+            value={record.type}
+          />
+
+          <InfoLine
+            label="Date"
+            value={record.date}
+          />
+
+          <InfoLine
+            label="Status"
+            value={record.status}
+          />
 
           <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
             <p className="text-[10px] uppercase tracking-wider text-[#7B8794]">
