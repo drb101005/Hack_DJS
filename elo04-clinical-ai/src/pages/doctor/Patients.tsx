@@ -244,7 +244,7 @@ export default function Patients({
 
           <div className="hidden sm:flex items-center gap-2 text-xs text-[#7B8794]">
             <ShieldCheck size={14} />
-            Protected clinical workspace
+            Protected Aura workspace
           </div>
         </div>
 

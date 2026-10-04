@@ -227,7 +227,7 @@ export default function DoctorLayout({
 
             <div className="hidden sm:block">
               <p className="text-sm font-medium text-[#172033]">
-                Clinical Workspace
+                Aura
               </p>
 
               <p className="text-xs text-[#7B8794]">

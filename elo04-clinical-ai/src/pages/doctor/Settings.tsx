@@ -43,7 +43,7 @@ export default function Settings() {
 
     showToast(
       'Settings saved',
-      'Clinical workspace preferences were updated successfully.',
+      'Aura workspace preferences were updated successfully.',
       'success',
     )
   }

@@ -239,7 +239,7 @@ export default function ClinicalReport({
 
     showToast(
       'Draft saved',
-      'The report draft is available in the clinical workspace.',
+      'The report draft is available in the Aura workspace.',
       'success',
     )
   }
