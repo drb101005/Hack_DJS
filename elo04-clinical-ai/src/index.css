@@ -2,35 +2,94 @@
 
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #e5e7eb;
-  background: #070b14;
+  color: #172033;
+  background: #F5F8FC;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  --page: #F5F8FC;
+  --surface: #FFFFFF;
+  --surface-soft: #F8FAFC;
+  --blue: #2563EB;
+  --blue-dark: #1E3A5F;
+  --blue-soft: #EFF6FF;
+  --text: #172033;
+  --text-secondary: #526174;
+  --muted: #7B8794;
+  --border: #E2E8F0;
+  --shadow: 0 1px 3px rgba(15, 23, 42, .06), 0 8px 24px rgba(15, 23, 42, .04);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+html, body { background: var(--page); }
+body { min-width: 320px; color: var(--text-secondary); }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #DBEAFE; color: var(--blue-dark); }
 
-html,
-body,
-#root {
-  min-height: 100%;
-  margin: 0;
-}
+/* Shared light surfaces, borders and typography for the existing screens. */
+[class*="bg-[#F5F8FC]"], [class*="bg-[#F8FAFC]"] { background-color: var(--page) !important; }
+[class*="bg-[#FFFFFF]"], [class*="bg-[#ffffff]"], [class*="bg-[#0d1320]"], [class*="bg-[#0b1120]"], [class*="bg-[#080d17]"], [class*="bg-[#090e18]"], [class*="bg-[#0a101c]"], [class*="bg-[#1e2228]"] { background-color: var(--surface) !important; }
+[class*="bg-[#252A30]"], [class*="bg-[#181a1f]"] { background-color: var(--surface-soft) !important; }
+[class*="border-[#E2E8F0]"], [class*="border-white/"] { border-color: var(--border) !important; }
+[class*="text-[#172033]"] { color: var(--text) !important; }
+[class*="text-[#334155]"], [class*="text-[#526174]"] { color: var(--text-secondary) !important; }
+[class*="text-[#7B8794]"] { color: var(--muted) !important; }
+[class*="text-[#2563EB]"] { color: var(--blue) !important; }
 
-body {
-  min-width: 320px;
-  background: #070b14;
-}
+/* Utility classes retained by the prototype now resolve to the clinical palette. */
+.text-white, .text-gray-100, .text-gray-200 { color: var(--text) !important; }
+.text-gray-300, .text-gray-400, .text-gray-500, .text-gray-600 { color: var(--text-secondary) !important; }
+[class*="text-cyan-"], [class*="text-blue-"] { color: var(--blue) !important; }
+[class*="bg-cyan-400"], [class*="bg-cyan-500"], [class*="bg-blue-500"] { background-color: var(--blue) !important; }
+[class*="bg-cyan-400/"], [class*="bg-cyan-500/"], [class*="bg-blue-500/"] { background-color: var(--blue-soft) !important; }
+[class*="border-cyan-"], [class*="border-blue-"] { border-color: #BFDBFE !important; }
+[class*="hover\\:bg-cyan-400"]:hover { background-color: #1D4ED8 !important; }
+[class*="text-amber-"], [class*="text-yellow-"] { color: #B45309 !important; }
+[class*="bg-amber-"] { background-color: #FFF7ED !important; }
+[class*="border-amber-"] { border-color: #FED7AA !important; }
+[class*="text-emerald-"], [class*="text-green-"] { color: #15803D !important; }
+[class*="bg-emerald-"], [class*="bg-green-"] { background-color: #F0FDF4 !important; }
+[class*="border-emerald-"] { border-color: #BBF7D0 !important; }
+[class*="text-red-"], [class*="text-rose-"] { color: #B91C1C !important; }
+[class*="bg-red-"], [class*="bg-rose-"] { background-color: #FEF2F2 !important; }
+[class*="border-red-"], [class*="border-rose-"] { border-color: #FECACA !important; }
+[class*="text-violet-"] { color: #6D28D9 !important; }
+[class*="bg-violet-"] { background-color: #F5F3FF !important; }
+[class*="border-violet-"] { border-color: #DDD6FE !important; }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
+/* Primary actions remain solid blue with readable white labels. */
+button[class*="bg-cyan-400"], button[class*="bg-cyan-500"], button[class*="bg-blue-500"] { color: #FFFFFF !important; }
+button[class*="bg-cyan-400"]:hover, button[class*="bg-cyan-500"]:hover { background-color: #1D4ED8 !important; }
+button[class*="bg-[#2563EB]"] { color: #FFFFFF !important; }
 
-button {
-  cursor: pointer;
-}
+/* Cards, navigation, data tables and forms. */
+[class*="rounded-3xl"], [class*="rounded-2xl"] { border-radius: 12px !important; }
+[class*="rounded-xl"] { border-radius: 10px !important; }
+[class*="shadow-2xl"], [class*="shadow-xl"], [class*="shadow-lg"] { box-shadow: var(--shadow) !important; }
+aside { background: var(--surface) !important; border-color: var(--border) !important; }
+header { background-color: rgba(255,255,255,.96) !important; border-color: var(--border) !important; }
+main { position: relative; }
+main::before, body::before { content: none !important; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; }
+table th { color: var(--muted) !important; background: #F8FAFC !important; font-size: .68rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+table tbody tr { transition: background-color 150ms ease; }
+table tbody tr:hover { background: #F5F9FF !important; }
+input, textarea, select { color: var(--text) !important; background: #FFFFFF !important; border-color: #CBD5E1 !important; }
+input::placeholder, textarea::placeholder { color: #94A3B8 !important; }
+input:focus, textarea:focus, select:focus { outline: none !important; border-color: var(--blue) !important; box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important; }
+
+.hud-panel, .hud-card { background: var(--surface) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; box-shadow: var(--shadow) !important; }
+.hud-panel::before, .hud-panel::after { content: none !important; }
+.hud-label, .clinical-micro { color: var(--muted) !important; }
+.hud-value, .clinical-title, .metric-value, .stat-value { color: var(--text) !important; }
+.clinical-text { color: var(--text-secondary) !important; }
+.clinical-muted, .metric-label, .stat-label { color: var(--muted) !important; }
+.telemetry-line { background: #DBEAFE; }
+.telemetry-grid { background-color: var(--blue-soft); }
+.font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

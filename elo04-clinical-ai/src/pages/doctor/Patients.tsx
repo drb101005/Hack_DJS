@@ -20,17 +20,17 @@ function StatusBadge({ status }: { status: Patient['status'] }) {
     stable: {
       label: 'Stable',
       className:
-        'bg-emerald-400/10 text-emerald-300 border-emerald-400/10',
+        'bg-[#16A34A]/10 text-[#16A34A] border-emerald-400/10',
     },
     monitoring: {
       label: 'Monitoring',
       className:
-        'bg-amber-400/10 text-amber-300 border-amber-400/10',
+        'bg-amber-400/10 text-[#526174] border-amber-400/10',
     },
     critical: {
       label: 'Critical',
       className:
-        'bg-red-400/10 text-red-300 border-red-400/10',
+        'bg-red-400/10 text-[#DC2626] border-red-400/10',
     },
   }
 
@@ -49,7 +49,7 @@ function StatusBadge({ status }: { status: Patient['status'] }) {
 function PatientAvatar({ patient }: { patient: Patient }) {
   return (
     <div className="h-11 w-11 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex items-center justify-center shrink-0">
-      <span className="text-sm font-semibold text-cyan-300">
+      <span className="text-sm font-semibold text-[#2563EB]">
         {patient.name
           .split(' ')
           .map((name) => name[0])
@@ -106,15 +106,15 @@ export default function Patients({
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-cyan-400 mb-2">
+          <p className="text-xs uppercase tracking-[0.18em] text-[#2563EB] mb-2">
             Patient Hub
           </p>
 
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#172033]">
             Patients
           </h1>
 
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-[#526174] mt-2">
             Manage patient records, investigations and clinical
             screening cases.
           </p>
@@ -131,62 +131,62 @@ export default function Patients({
 
       {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
           <div className="h-10 w-10 rounded-xl bg-cyan-400/10 flex items-center justify-center">
-            <UserRound size={19} className="text-cyan-400" />
+            <UserRound size={19} className="text-[#2563EB]" />
           </div>
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             {mockPatients.length}
           </p>
 
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-[#526174] mt-1">
             Total patients
           </p>
         </div>
 
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
-          <div className="h-10 w-10 rounded-xl bg-emerald-400/10 flex items-center justify-center">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
+          <div className="h-10 w-10 rounded-xl bg-[#16A34A]/10 flex items-center justify-center">
             <HeartPulse
               size={19}
-              className="text-emerald-400"
+              className="text-[#16A34A]"
             />
           </div>
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             {stableCount}
           </p>
 
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-[#526174] mt-1">
             Stable
           </p>
         </div>
 
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
           <div className="h-10 w-10 rounded-xl bg-amber-400/10 flex items-center justify-center">
             <Activity
               size={19}
-              className="text-amber-400"
+              className="text-[#526174]"
             />
           </div>
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             {monitoringCount + criticalCount}
           </p>
 
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-[#526174] mt-1">
             Require monitoring
           </p>
         </div>
       </div>
 
       {/* Search / filters */}
-      <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-4">
+      <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-4">
         <div className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
             <Search
               size={17}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7B8794]"
             />
 
             <input
@@ -195,12 +195,12 @@ export default function Patients({
                 setSearch(event.target.value)
               }
               placeholder="Search by patient name, ID or condition..."
-              className="w-full h-11 bg-[#080d17] border border-white/[0.07] rounded-xl pl-11 pr-4 text-sm text-white placeholder:text-gray-700 outline-none focus:border-cyan-400/30 transition"
+              className="w-full h-11 bg-[#FFFFFF] border border-white/[0.07] rounded-xl pl-11 pr-4 text-sm text-[#172033] placeholder:text-[#7B8794] outline-none focus:border-cyan-400/30 transition"
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <Filter size={16} className="text-gray-600" />
+            <Filter size={16} className="text-[#7B8794]" />
 
             {(
               [
@@ -218,8 +218,8 @@ export default function Patients({
                 }
                 className={`h-10 px-3 rounded-lg text-xs border transition ${
                   statusFilter === value
-                    ? 'bg-cyan-400/10 border-cyan-400/20 text-cyan-300'
-                    : 'bg-white/[0.02] border-white/[0.06] text-gray-500 hover:text-gray-300'
+                    ? 'bg-cyan-400/10 border-cyan-400/20 text-[#2563EB]'
+                    : 'hud-card bg-[#F8FAFC] border-white/[0.06] text-[#526174] hover:text-[#334155]'
                 }`}
               >
                 {label}
@@ -230,19 +230,19 @@ export default function Patients({
       </div>
 
       {/* Patient table */}
-      <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl overflow-hidden">
+      <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl overflow-hidden">
         <div className="px-5 py-4 border-b border-white/[0.07] flex items-center justify-between">
           <div>
-            <h2 className="font-semibold text-white">
+            <h2 className="font-semibold text-[#172033]">
               Patient Directory
             </h2>
 
-            <p className="text-xs text-gray-600 mt-1">
+            <p className="text-xs text-[#7B8794] mt-1">
               {filteredPatients.length} patients displayed
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-xs text-gray-600">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-[#7B8794]">
             <ShieldCheck size={14} />
             Protected clinical workspace
           </div>
@@ -261,16 +261,16 @@ export default function Patients({
 
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3">
-                    <p className="text-sm font-medium text-gray-200">
+                    <p className="text-sm font-medium text-[#334155]">
                       {patient.name}
                     </p>
 
-                    <span className="text-[10px] text-gray-700">
+                    <span className="text-[10px] text-[#7B8794]">
                       {patient.id}
                     </span>
                   </div>
 
-                  <p className="text-xs text-gray-600 mt-1 truncate">
+                  <p className="text-xs text-[#7B8794] mt-1 truncate">
                     {patient.age} years • {patient.gender} •{' '}
                     {patient.bloodGroup} • {patient.condition}
                   </p>
@@ -280,12 +280,12 @@ export default function Patients({
                   <StatusBadge status={patient.status} />
                 </div>
 
-                <div className="hidden lg:flex items-center gap-2 text-xs text-gray-600">
+                <div className="hidden lg:flex items-center gap-2 text-xs text-[#7B8794]">
                   <span>View profile</span>
 
                   <ChevronRight
                     size={15}
-                    className="group-hover:text-cyan-400 group-hover:translate-x-0.5 transition"
+                    className="group-hover:text-[#2563EB] group-hover:translate-x-0.5 transition"
                   />
                 </div>
               </div>
@@ -296,14 +296,14 @@ export default function Patients({
             <div className="py-16 text-center">
               <Search
                 size={24}
-                className="mx-auto text-gray-700"
+                className="mx-auto text-[#7B8794]"
               />
 
-              <p className="text-sm text-gray-500 mt-3">
+              <p className="text-sm text-[#526174] mt-3">
                 No patients found
               </p>
 
-              <p className="text-xs text-gray-700 mt-1">
+              <p className="text-xs text-[#7B8794] mt-1">
                 Try changing your search or filter.
               </p>
             </div>

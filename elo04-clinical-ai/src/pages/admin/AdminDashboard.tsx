@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+
 import {
   Activity,
   Brain,
@@ -22,6 +23,7 @@ import {
   Users,
   UserRound,
 } from 'lucide-react'
+
 import { useDemo } from '../../context/DemoContext'
 import { mockPatients } from '../../data/patients'
 
@@ -40,28 +42,28 @@ type AdminSection =
 const doctors = [
   {
     id: 'DOC-001',
-    name: 'Dr. Sarah Mitchell',
+    name: 'Dr. Ajay Lad',
     specialty: 'Clinical Specialist',
     status: 'Active',
     cases: 42,
   },
   {
     id: 'DOC-002',
-    name: 'Dr. David Wilson',
+    name: 'Dr. Vikram Mehta',
     specialty: 'Radiology',
     status: 'Active',
     cases: 31,
   },
   {
     id: 'DOC-003',
-    name: 'Dr. Priya Shah',
+    name: 'Dr. Neha Kulkarni',
     specialty: 'Cardiology',
     status: 'Active',
     cases: 27,
   },
   {
     id: 'DOC-004',
-    name: 'Dr. Michael Chen',
+    name: 'Dr. Rohan Desai',
     specialty: 'Neurology',
     status: 'Offline',
     cases: 18,
@@ -171,34 +173,34 @@ export default function AdminDashboard({
   const recentEvents = auditEvents.slice(0, 8)
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-gray-200">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#070b14]/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-[#F5F8FC] text-[#334155]">
+      <header className="sticky top-0 z-40 border-b border-[#E2E8F0] bg-[#F5F8FC]/95 backdrop-blur-xl">
         <div className="flex h-16 items-center justify-between px-4 lg:px-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-              <ShieldCheck className="h-5 w-5 text-cyan-400" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#2563EB]/30 bg-[#2563EB]/10">
+              <ShieldCheck className="h-5 w-5 text-[#2563EB]" />
             </div>
 
             <div>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-semibold text-[#172033]">
                 MedAI Clinical Intelligence
               </p>
 
-              <p className="text-[10px] uppercase tracking-[0.18em] text-gray-600">
+              <p className="text-[10px] uppercase tracking-[0.18em] text-[#7B8794]">
                 ELO-04 Administration
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-xs text-emerald-300 sm:flex">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            <div className="hidden items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-xs text-[#16A34A] sm:flex">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#16A34A]" />
               Systems Operational
             </div>
 
             <button
               onClick={onLogout}
-              className="rounded-xl border border-white/10 px-3 py-2 text-xs text-gray-400 transition hover:bg-white/5 hover:text-white"
+              className="rounded-xl border border-[#E2E8F0] px-3 py-2 text-xs text-[#526174] transition hover:bg-white/5 hover:text-[#172033]"
             >
               Sign out
             </button>
@@ -207,7 +209,7 @@ export default function AdminDashboard({
       </header>
 
       <div className="flex min-h-[calc(100vh-4rem)]">
-        <aside className="hidden w-60 shrink-0 border-r border-white/10 bg-[#090e19] p-4 lg:block">
+        <aside className="hidden w-60 shrink-0 border-r border-[#E2E8F0] bg-[#F8FAFC] p-4 lg:block">
           <nav className="space-y-1">
             <NavItem
               active={section === 'overview'}
@@ -252,16 +254,16 @@ export default function AdminDashboard({
             />
           </nav>
 
-          <div className="mt-8 rounded-2xl border border-white/5 bg-white/[0.02] p-4">
+          <div className="mt-8 rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
             <div className="flex items-center gap-2">
-              <Lock className="h-4 w-4 text-gray-600" />
+              <Lock className="h-4 w-4 text-[#7B8794]" />
 
-              <span className="text-xs font-medium text-gray-400">
+              <span className="text-xs font-medium text-[#526174]">
                 Admin Access
               </span>
             </div>
 
-            <p className="mt-2 text-[10px] leading-4 text-gray-600">
+            <p className="mt-2 text-[10px] leading-4 text-[#7B8794]">
               Full system visibility, model management, audit
               access and resource monitoring.
             </p>
@@ -285,8 +287,8 @@ export default function AdminDashboard({
                 }
                 className={`whitespace-nowrap rounded-xl px-3 py-2 text-xs ${
                   section === value
-                    ? 'bg-cyan-500 text-slate-950'
-                    : 'border border-white/10 text-gray-400'
+                    ? 'bg-[#2563EB] text-slate-950'
+                    : 'border border-[#E2E8F0] text-[#526174]'
                 }`}
               >
                 {label}
@@ -384,7 +386,7 @@ function OverviewSection({
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.5fr_1fr]">
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <SectionTitle
             icon={Network}
             title="Live Screening Pipeline"
@@ -402,11 +404,11 @@ function OverviewSection({
             ].map(([label, value, status]) => (
               <div key={String(label)}>
                 <div className="mb-2 flex justify-between text-xs">
-                  <span className="text-gray-400">
+                  <span className="text-[#526174]">
                     {String(label)}
                   </span>
 
-                  <span className="text-emerald-300">
+                  <span className="text-[#16A34A]">
                     {String(status)}
                   </span>
                 </div>
@@ -422,7 +424,7 @@ function OverviewSection({
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <SectionTitle
             icon={Activity}
             title="System Health"
@@ -456,7 +458,7 @@ function OverviewSection({
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <SectionTitle
             icon={Brain}
             title="AI Model Registry"
@@ -468,14 +470,14 @@ function OverviewSection({
             {models.map((model) => (
               <div
                 key={model.name}
-                className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] p-3"
+                className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3"
               >
                 <div>
-                  <p className="text-xs font-medium text-gray-200">
+                  <p className="text-xs font-medium text-[#334155]">
                     {model.name}
                   </p>
 
-                  <p className="mt-1 text-[10px] text-gray-600">
+                  <p className="mt-1 text-[10px] text-[#7B8794]">
                     {model.version} · {model.modality}
                   </p>
                 </div>
@@ -483,8 +485,8 @@ function OverviewSection({
                 <span
                   className={`rounded-full px-2 py-1 text-[9px] ${
                     model.status === 'Active'
-                      ? 'bg-emerald-500/10 text-emerald-300'
-                      : 'bg-gray-500/10 text-gray-400'
+                      ? 'bg-emerald-500/10 text-[#16A34A]'
+                      : 'bg-gray-500/10 text-[#526174]'
                   }`}
                 >
                   {model.status}
@@ -494,7 +496,7 @@ function OverviewSection({
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <SectionTitle
             icon={FileClock}
             title="Recent Audit Activity"
@@ -505,12 +507,12 @@ function OverviewSection({
           <div className="mt-4 space-y-2">
             <AuditPreview />
 
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-              <p className="text-xs font-medium text-white">
+            <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+              <p className="text-xs font-medium text-[#172033]">
                 {auditCount} tracked events
               </p>
 
-              <p className="mt-1 text-[10px] text-gray-600">
+              <p className="mt-1 text-[10px] text-[#7B8794]">
                 Clinical and system actions are retained in the demo audit trail.
               </p>
             </div>
@@ -549,8 +551,8 @@ function UsersSection({
             onClick={() => setTab('patients')}
             className={`rounded-xl px-4 py-2 text-xs ${
               tab === 'patients'
-                ? 'bg-cyan-500 text-slate-950'
-                : 'border border-white/10 text-gray-400'
+                ? 'bg-[#2563EB] text-slate-950'
+                : 'border border-[#E2E8F0] text-[#526174]'
             }`}
           >
             Patients
@@ -560,8 +562,8 @@ function UsersSection({
             onClick={() => setTab('doctors')}
             className={`rounded-xl px-4 py-2 text-xs ${
               tab === 'doctors'
-                ? 'bg-cyan-500 text-slate-950'
-                : 'border border-white/10 text-gray-400'
+                ? 'bg-[#2563EB] text-slate-950'
+                : 'border border-[#E2E8F0] text-[#526174]'
             }`}
           >
             Doctors
@@ -570,7 +572,7 @@ function UsersSection({
 
         {tab === 'patients' && (
           <div className="relative w-full sm:w-72">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-600" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#7B8794]" />
 
             <input
               value={search}
@@ -578,17 +580,17 @@ function UsersSection({
                 setSearch(event.target.value)
               }
               placeholder="Search patient..."
-              className="w-full rounded-xl border border-white/10 bg-white/[0.03] py-2.5 pl-9 pr-3 text-xs text-gray-200 outline-none placeholder:text-gray-700 focus:border-cyan-500/40"
+              className="w-full rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] py-2.5 pl-9 pr-3 text-xs text-[#334155] outline-none placeholder:text-[#7B8794] focus:border-cyan-500/40"
             />
           </div>
         )}
       </div>
 
       {tab === 'patients' ? (
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b1120]">
+        <div className="overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF]">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-left">
-              <thead className="border-b border-white/5 bg-white/[0.02]">
+              <thead className="border-b border-[#E2E8F0] bg-[#F8FAFC]">
                 <tr>
                   {[
                     'Patient',
@@ -600,7 +602,7 @@ function UsersSection({
                   ].map((header) => (
                     <th
                       key={header}
-                      className="px-5 py-4 text-[10px] uppercase tracking-wider text-gray-600"
+                      className="px-5 py-4 text-[10px] uppercase tracking-wider text-[#7B8794]"
                     >
                       {header}
                     </th>
@@ -612,23 +614,23 @@ function UsersSection({
                 {patients.map((patient) => (
                   <tr
                     key={patient.id}
-                    className="transition hover:bg-white/[0.02]"
+                    className="transition hover:bg-[#F8FAFC]"
                   >
                     <td className="px-5 py-4">
-                      <p className="text-xs font-medium text-white">
+                      <p className="text-xs font-medium text-[#172033]">
                         {patient.name}
                       </p>
 
-                      <p className="mt-1 text-[10px] text-gray-600">
+                      <p className="mt-1 text-[10px] text-[#7B8794]">
                         {patient.age} · {patient.gender}
                       </p>
                     </td>
 
-                    <td className="px-5 py-4 text-xs text-gray-500">
+                    <td className="px-5 py-4 text-xs text-[#526174]">
                       {patient.id}
                     </td>
 
-                    <td className="px-5 py-4 text-xs text-gray-400">
+                    <td className="px-5 py-4 text-xs text-[#526174]">
                       {patient.condition}
                     </td>
 
@@ -636,12 +638,12 @@ function UsersSection({
                       <StatusBadge status={patient.status} />
                     </td>
 
-                    <td className="px-5 py-4 text-xs text-gray-400">
+                    <td className="px-5 py-4 text-xs text-[#526174]">
                       {cases + patient.age % 4}
                     </td>
 
                     <td className="px-5 py-4 text-right">
-                      <button className="rounded-lg p-2 text-gray-600 hover:bg-white/5 hover:text-white">
+                      <button className="rounded-lg p-2 text-[#7B8794] hover:bg-white/5 hover:text-[#172033]">
                         <MoreHorizontal className="h-4 w-4" />
                       </button>
                     </td>
@@ -656,30 +658,30 @@ function UsersSection({
           {doctors.map((doctor) => (
             <div
               key={doctor.id}
-              className="rounded-2xl border border-white/10 bg-[#0b1120] p-5"
+              className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5"
             >
               <div className="flex items-start justify-between">
-                <div className="rounded-xl bg-cyan-500/10 p-3">
-                  <UserRound className="h-5 w-5 text-cyan-400" />
+                <div className="rounded-xl bg-[#2563EB]/10 p-3">
+                  <UserRound className="h-5 w-5 text-[#2563EB]" />
                 </div>
 
                 <StatusBadge status={doctor.status} />
               </div>
 
-              <h3 className="mt-5 text-sm font-semibold text-white">
+              <h3 className="mt-5 text-sm font-semibold text-[#172033]">
                 {doctor.name}
               </h3>
 
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-[#526174]">
                 {doctor.specialty}
               </p>
 
-              <div className="mt-5 flex justify-between border-t border-white/5 pt-4 text-xs">
-                <span className="text-gray-600">
+              <div className="mt-5 flex justify-between border-t border-[#E2E8F0] pt-4 text-xs">
+                <span className="text-[#7B8794]">
                   Clinical cases
                 </span>
 
-                <span className="font-semibold text-gray-300">
+                <span className="font-semibold text-[#334155]">
                   {doctor.cases}
                 </span>
               </div>
@@ -723,8 +725,8 @@ function ModelsSection({
             onClick={() => setFilter(item)}
             className={`whitespace-nowrap rounded-xl px-3 py-2 text-xs ${
               filter === item
-                ? 'bg-cyan-500 text-slate-950'
-                : 'border border-white/10 text-gray-500 hover:text-white'
+                ? 'bg-[#2563EB] text-slate-950'
+                : 'border border-[#E2E8F0] text-[#526174] hover:text-[#172033]'
             }`}
           >
             {item}
@@ -736,15 +738,15 @@ function ModelsSection({
         {visibleModels.map((model) => (
           <div
             key={model.name}
-            className="rounded-2xl border border-white/10 bg-[#0b1120] p-5"
+            className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5"
           >
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-[#172033]">
                   {model.name}
                 </p>
 
-                <p className="mt-1 text-xs text-gray-600">
+                <p className="mt-1 text-xs text-[#7B8794]">
                   {model.version} · {model.modality}
                 </p>
               </div>
@@ -771,11 +773,11 @@ function ModelsSection({
 
             <div className="mt-5">
               <div className="mb-2 flex justify-between text-[10px]">
-                <span className="text-gray-600">
+                <span className="text-[#7B8794]">
                   Model confidence
                 </span>
 
-                <span className="text-cyan-300">
+                <span className="text-[#2563EB]">
                   {model.accuracy}%
                 </span>
               </div>
@@ -812,15 +814,15 @@ function ResourcesSection() {
           return (
             <div
               key={item.label}
-              className="rounded-2xl border border-white/10 bg-[#0b1120] p-5"
+              className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5"
             >
-              <Icon className="h-5 w-5 text-cyan-400" />
+              <Icon className="h-5 w-5 text-[#2563EB]" />
 
-              <p className="mt-4 text-xs text-gray-600">
+              <p className="mt-4 text-xs text-[#7B8794]">
                 {item.label}
               </p>
 
-              <p className="mt-1 text-2xl font-semibold text-white">
+              <p className="mt-1 text-2xl font-semibold text-[#172033]">
                 {item.value}
                 {item.unit}
               </p>
@@ -889,17 +891,17 @@ function AuditSection({
         description="Traceable activity across clinical, AI, and administrative workflows."
       />
 
-      <div className="rounded-2xl border border-white/10 bg-[#0b1120]">
-        <div className="border-b border-white/5 p-5">
+      <div className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF]">
+        <div className="border-b border-[#E2E8F0] p-5">
           <div className="flex items-center gap-3">
-            <FileClock className="h-5 w-5 text-cyan-400" />
+            <FileClock className="h-5 w-5 text-[#2563EB]" />
 
             <div>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-semibold text-[#172033]">
                 Activity Timeline
               </p>
 
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-[#7B8794]">
                 Latest recorded system events
               </p>
             </div>
@@ -912,26 +914,26 @@ function AuditSection({
               key={event.id}
               className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center"
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10">
-                <Activity className="h-4 w-4 text-cyan-400" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#2563EB]/10">
+                <Activity className="h-4 w-4 text-[#2563EB]" />
               </div>
 
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-medium text-white">
+                <p className="text-xs font-medium text-[#172033]">
                   {event.action}
                 </p>
 
-                <p className="mt-1 text-[10px] text-gray-600">
+                <p className="mt-1 text-[10px] text-[#7B8794]">
                   {event.actor} · {event.target}
                 </p>
               </div>
 
               <div className="text-left sm:text-right">
-                <p className="text-[10px] text-gray-500">
+                <p className="text-[10px] text-[#526174]">
                   {event.time}
                 </p>
 
-                <span className="mt-1 inline-block rounded-full bg-emerald-500/10 px-2 py-1 text-[9px] text-emerald-300">
+                <span className="mt-1 inline-block rounded-full bg-emerald-500/10 px-2 py-1 text-[9px] text-[#16A34A]">
                   {event.status}
                 </span>
               </div>
@@ -939,7 +941,7 @@ function AuditSection({
           ))}
 
           {events.length === 0 && (
-            <div className="p-10 text-center text-xs text-gray-600">
+            <div className="p-10 text-center text-xs text-[#7B8794]">
               No audit events recorded yet.
             </div>
           )}
@@ -967,16 +969,16 @@ function AdminSettings() {
       />
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <div className="flex items-center gap-3">
-            <SlidersHorizontal className="h-5 w-5 text-cyan-400" />
+            <SlidersHorizontal className="h-5 w-5 text-[#2563EB]" />
 
             <div>
-              <h2 className="text-sm font-semibold text-white">
+              <h2 className="text-sm font-semibold text-[#172033]">
                 Platform Controls
               </h2>
 
-              <p className="mt-1 text-xs text-gray-600">
+              <p className="mt-1 text-xs text-[#7B8794]">
                 Demo environment configuration.
               </p>
             </div>
@@ -1010,16 +1012,16 @@ function AdminSettings() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+        <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <div className="flex items-center gap-3">
-            <ShieldCheck className="h-5 w-5 text-cyan-400" />
+            <ShieldCheck className="h-5 w-5 text-[#2563EB]" />
 
             <div>
-              <h2 className="text-sm font-semibold text-white">
+              <h2 className="text-sm font-semibold text-[#172033]">
                 Security Status
               </h2>
 
-              <p className="mt-1 text-xs text-gray-600">
+              <p className="mt-1 text-xs text-[#7B8794]">
                 Current simulated platform security posture.
               </p>
             </div>
@@ -1063,15 +1065,15 @@ function PageHeading({
 }) {
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.18em] text-cyan-400">
+      <p className="text-xs uppercase tracking-[0.18em] text-[#2563EB]">
         {eyebrow}
       </p>
 
-      <h1 className="mt-2 text-2xl font-semibold text-white">
+      <h1 className="mt-2 text-2xl font-semibold text-[#172033]">
         {title}
       </h1>
 
-      <p className="mt-1 max-w-2xl text-sm text-gray-500">
+      <p className="mt-1 max-w-2xl text-sm text-[#526174]">
         {description}
       </p>
     </div>
@@ -1094,8 +1096,8 @@ function NavItem({
       onClick={onClick}
       className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-xs transition ${
         active
-          ? 'bg-cyan-500/10 text-cyan-300'
-          : 'text-gray-500 hover:bg-white/[0.03] hover:text-gray-200'
+          ? 'bg-[#2563EB]/10 text-[#2563EB]'
+          : 'text-[#526174] hover:bg-[#F8FAFC] hover:text-[#334155]'
       }`}
     >
       <Icon className="h-4 w-4" />
@@ -1118,9 +1120,9 @@ function SectionTitle({
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <Icon className="h-4 w-4 text-cyan-400" />
+        <Icon className="h-4 w-4 text-[#2563EB]" />
 
-        <h2 className="text-sm font-semibold text-white">
+        <h2 className="text-sm font-semibold text-[#172033]">
           {title}
         </h2>
       </div>
@@ -1128,7 +1130,7 @@ function SectionTitle({
       {action && (
         <button
           onClick={onAction}
-          className="flex items-center gap-1 text-[10px] text-cyan-400 hover:text-cyan-300"
+          className="flex items-center gap-1 text-[10px] text-[#2563EB] hover:text-[#2563EB]"
         >
           {action}
           <ChevronRight className="h-3 w-3" />
@@ -1150,22 +1152,22 @@ function StatCard({
   detail: string
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+    <div className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
       <div className="flex items-center justify-between">
-        <Icon className="h-5 w-5 text-cyan-400" />
+        <Icon className="h-5 w-5 text-[#2563EB]" />
 
-        <span className="h-2 w-2 rounded-full bg-emerald-400" />
+        <span className="h-2 w-2 rounded-full bg-[#16A34A]" />
       </div>
 
-      <p className="mt-5 text-xs text-gray-600">
+      <p className="mt-5 text-xs text-[#7B8794]">
         {label}
       </p>
 
-      <p className="mt-1 text-2xl font-semibold text-white">
+      <p className="mt-1 text-2xl font-semibold text-[#172033]">
         {value}
       </p>
 
-      <p className="mt-1 text-[10px] text-emerald-400">
+      <p className="mt-1 text-[10px] text-[#16A34A]">
         {detail}
       </p>
     </div>
@@ -1180,12 +1182,12 @@ function HealthRow({
   value: string
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
-      <span className="text-xs text-gray-400">
+    <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3 last:border-0 last:pb-0">
+      <span className="text-xs text-[#526174]">
         {label}
       </span>
 
-      <span className="flex items-center gap-2 text-[10px] text-emerald-300">
+      <span className="flex items-center gap-2 text-[10px] text-[#16A34A]">
         <CheckCircle2 className="h-3.5 w-3.5" />
         {value}
       </span>
@@ -1203,17 +1205,17 @@ function AuditPreview() {
       ].map(([time, action, target]) => (
         <div
           key={`${time}-${action}`}
-          className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-3"
+          className="flex items-center gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3"
         >
-          <span className="font-mono text-[9px] text-gray-600">
+          <span className="font-mono text-[9px] text-[#7B8794]">
             {time}
           </span>
 
-          <span className="flex-1 text-xs text-gray-400">
+          <span className="flex-1 text-xs text-[#526174]">
             {action}
           </span>
 
-          <span className="text-[10px] text-cyan-400">
+          <span className="text-[10px] text-[#2563EB]">
             {target}
           </span>
         </div>
@@ -1240,10 +1242,10 @@ function StatusBadge({
     <span
       className={`rounded-full px-2 py-1 text-[9px] ${
         positive
-          ? 'bg-emerald-500/10 text-emerald-300'
+          ? 'bg-emerald-500/10 text-[#16A34A]'
           : warning
-            ? 'bg-amber-500/10 text-amber-300'
-            : 'bg-red-500/10 text-red-300'
+            ? 'bg-amber-500/10 text-[#526174]'
+            : 'bg-red-500/10 text-[#DC2626]'
       }`}
     >
       {status}
@@ -1259,12 +1261,12 @@ function MiniMetric({
   value: string
 }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-      <p className="text-[9px] uppercase tracking-wider text-gray-600">
+    <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+      <p className="text-[9px] uppercase tracking-wider text-[#7B8794]">
         {label}
       </p>
 
-      <p className="mt-1 text-xs font-semibold text-gray-300">
+      <p className="mt-1 text-xs font-semibold text-[#172033]">
         {value}
       </p>
     </div>
@@ -1281,11 +1283,11 @@ function ResourcePanel({
   items: string[][]
 }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+    <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
       <div className="flex items-center gap-2">
-        <Icon className="h-4 w-4 text-cyan-400" />
+        <Icon className="h-4 w-4 text-[#2563EB]" />
 
-        <h2 className="text-sm font-semibold text-white">
+        <h2 className="text-sm font-semibold text-[#172033]">
           {title}
         </h2>
       </div>
@@ -1294,21 +1296,21 @@ function ResourcePanel({
         {items.map(([name, status, detail]) => (
           <div
             key={name}
-            className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-3"
+            className="flex items-center gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3"
           >
-            <div className="h-2 w-2 rounded-full bg-emerald-400" />
+            <div className="h-2 w-2 rounded-full bg-[#16A34A]" />
 
             <div className="min-w-0 flex-1">
-              <p className="text-xs text-gray-300">
+              <p className="text-xs text-[#334155]">
                 {name}
               </p>
 
-              <p className="mt-1 text-[10px] text-gray-600">
+              <p className="mt-1 text-[10px] text-[#7B8794]">
                 {status}
               </p>
             </div>
 
-            <span className="text-[10px] text-cyan-300">
+            <span className="text-[10px] text-[#2563EB]">
               {detail}
             </span>
           </div>
@@ -1332,11 +1334,11 @@ function AdminToggle({
   return (
     <div className="flex items-center justify-between gap-4 py-5">
       <div>
-        <p className="text-sm font-medium text-gray-200">
+        <p className="text-sm font-medium text-[#334155]">
           {label}
         </p>
 
-        <p className="mt-1 text-xs leading-5 text-gray-600">
+        <p className="mt-1 text-xs leading-5 text-[#7B8794]">
           {description}
         </p>
       </div>
@@ -1344,7 +1346,7 @@ function AdminToggle({
       <button
         onClick={onChange}
         className={`relative h-6 w-11 shrink-0 rounded-full transition ${
-          enabled ? 'bg-cyan-500' : 'bg-gray-700'
+          enabled ? 'bg-[#2563EB]' : 'bg-gray-700'
         }`}
       >
         <span
@@ -1365,12 +1367,12 @@ function SecurityRow({
   status: string
 }) {
   return (
-    <div className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.02] p-3">
-      <span className="text-xs text-gray-400">
+    <div className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+      <span className="text-xs text-[#526174]">
         {label}
       </span>
 
-      <span className="flex items-center gap-1.5 text-[10px] text-emerald-300">
+      <span className="flex items-center gap-1.5 text-[10px] text-[#16A34A]">
         <CheckCircle2 className="h-3.5 w-3.5" />
         {status}
       </span>

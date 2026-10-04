@@ -13,7 +13,6 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import { DemoProvider, useDemo } from './context/DemoContext'
 import { ToastProvider } from './context/ToastContext'
 import ToastContainer from './components/ui/ToastContainer'
-import ModelRouter from './components/ai/ModelRouter'
 import Settings from './pages/doctor/Settings'
 import type { Patient } from './types'
 
@@ -51,7 +50,10 @@ function AppContent() {
   const [activeCaseId, setActiveCaseId] =
     useState<string | null>(null)
 
-  const { createCase, approveCase, addAuditEvent } =
+  const [activeModalities, setActiveModalities] =
+    useState<string[]>(['X-Ray', 'PDF'])
+
+  const { createCase, addAuditEvent } =
     useDemo()
 
   if (!role) {
@@ -63,6 +65,7 @@ function AppContent() {
     setDoctorPage('overview')
     setSelectedPatient(null)
     setActiveCaseId(null)
+    setActiveModalities([])
   }
 
   if (role === 'doctor') {
@@ -131,17 +134,18 @@ function AppContent() {
                   : 'overview',
               )
             }}
-            onCaseCreated={(caseId) => {
+            onCaseCreated={(caseId, modalities) => {
               const generatedCase = createCase(
                 selectedPatient?.id ?? 'PAT-1001',
                 selectedPatient?.name ??
                   'James Anderson',
-                ['X-Ray', 'Clinical Text'],
+                modalities,
               )
 
               setActiveCaseId(
                 generatedCase || caseId,
               )
+              setActiveModalities(modalities)
 
               setDoctorPage('ai-analysis')
             }}
@@ -153,6 +157,13 @@ function AppContent() {
             <AIAnalysis
               patient={selectedPatient}
               caseId={activeCaseId}
+              modalities={activeModalities}
+              onAnalysisStarted={() => {
+                if (activeCaseId) addAuditEvent('AI Analysis Started', activeCaseId, 'Running', 'AI Orchestrator')
+              }}
+              onAnalysisCompleted={() => {
+                if (activeCaseId) addAuditEvent('AI Analysis Completed', activeCaseId, 'Completed', 'AI Orchestrator')
+              }}
               onContinue={() => {
                 if (activeCaseId) {
                   addAuditEvent(
@@ -165,8 +176,6 @@ function AppContent() {
                 setDoctorPage('rag')
               }}
             />
-
-            <ModelRouter running />
           </div>
         )}
 
@@ -192,11 +201,6 @@ function AppContent() {
           <ClinicalReport
             patient={selectedPatient}
             caseId={activeCaseId}
-            onApproved={() => {
-              if (activeCaseId) {
-                approveCase(activeCaseId)
-              }
-            }}
           />
         )}
 

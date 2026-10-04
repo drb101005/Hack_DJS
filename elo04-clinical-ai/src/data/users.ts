@@ -3,14 +3,14 @@ import type { User } from '../types'
 export const mockUsers: User[] = [
   {
     id: 'DOC-001',
-    name: 'Dr. Sarah Mitchell',
-    email: 'sarah.mitchell@medai.demo',
+    name: 'Dr. Ajay Lad',
+    email: 'ajay.lad@medai.demo',
     role: 'doctor',
   },
   {
     id: 'PAT-1001',
-    name: 'James Anderson',
-    email: 'james.anderson@patient.demo',
+    name: 'Ram Sharma',
+    email: 'ram.sharma@patient.demo',
     role: 'patient',
   },
   {

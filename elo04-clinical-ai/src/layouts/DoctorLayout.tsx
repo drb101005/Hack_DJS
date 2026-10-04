@@ -91,7 +91,7 @@ export default function DoctorLayout({
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-white flex">
+    <div className="min-h-screen bg-[#F5F8FC] text-[#172033] flex">
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/60 z-30 lg:hidden"
@@ -103,7 +103,7 @@ export default function DoctorLayout({
         className={`
           fixed lg:sticky top-0 left-0 z-40
           h-screen
-          bg-[#0a101c]
+          bg-[#FFFFFF]
           border-r border-white/[0.07]
           flex flex-col
           transition-all duration-300
@@ -111,31 +111,29 @@ export default function DoctorLayout({
           overflow-hidden
         `}
       >
-        {/* Brand */}
         <div className="h-[76px] px-5 flex items-center border-b border-white/[0.07] shrink-0">
           <div className="h-10 w-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center shrink-0">
-            <Activity size={21} className="text-cyan-400" />
+            <Activity size={21} className="text-[#2563EB]" />
           </div>
 
           {sidebarOpen && (
             <div className="ml-3 whitespace-nowrap">
-              <p className="font-semibold text-white leading-tight">
+              <p className="font-semibold text-[#172033] leading-tight">
                 MedAI
               </p>
 
-              <p className="text-[10px] uppercase tracking-[0.18em] text-cyan-400/70 mt-0.5">
+              <p className="text-[10px] uppercase tracking-[0.18em] text-[#2563EB]/70 mt-0.5">
                 Clinical Intelligence
               </p>
             </div>
           )}
         </div>
 
-        {/* Navigation */}
         <div className="flex-1 overflow-y-auto px-3 py-6">
           {navigation.map((group) => (
             <div key={group.section} className="mb-7">
               {sidebarOpen && (
-                <p className="px-3 mb-3 text-[10px] font-semibold tracking-[0.18em] text-gray-600">
+                <p className="px-3 mb-3 text-[10px] font-semibold tracking-[0.18em] text-[#7B8794]">
                   {group.section}
                 </p>
               )}
@@ -162,15 +160,15 @@ export default function DoctorLayout({
                         transition-all
                         ${
                           active
-                            ? 'bg-cyan-400/10 text-cyan-300 border border-cyan-400/10'
-                            : 'text-gray-500 hover:text-gray-200 hover:bg-white/[0.04]'
+                            ? 'bg-cyan-400/10 text-[#2563EB] border border-cyan-400/10'
+                            : 'text-[#526174] hover:text-[#334155] hover:bg-white/[0.04]'
                         }
                       `}
                     >
                       <Icon
                         size={18}
                         className={`shrink-0 ${
-                          active ? 'text-cyan-400' : ''
+                          active ? 'text-[#2563EB]' : ''
                         }`}
                       />
 
@@ -191,39 +189,34 @@ export default function DoctorLayout({
           ))}
         </div>
 
-        {/* Bottom navigation */}
         <div className="p-3 border-t border-white/[0.07]">
           <button
             type="button"
             onClick={() => onNavigate('settings')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-500 hover:text-gray-200 hover:bg-white/[0.04] transition"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-[#526174] hover:text-[#334155] hover:bg-white/[0.04] transition"
           >
             <Settings size={18} className="shrink-0" />
-
             {sidebarOpen && <span>Settings</span>}
           </button>
 
           <button
             type="button"
             onClick={onLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-500 hover:text-red-300 hover:bg-red-400/5 transition"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-[#526174] hover:text-[#DC2626] hover:bg-red-400/5 transition"
           >
             <LogOut size={18} className="shrink-0" />
-
             {sidebarOpen && <span>Sign out</span>}
           </button>
         </div>
       </aside>
 
-      {/* Main application */}
       <div className="flex-1 min-w-0">
-        {/* Topbar */}
-        <header className="h-[76px] border-b border-white/[0.07] bg-[#080d17]/90 backdrop-blur-xl flex items-center justify-between px-4 sm:px-6 lg:px-8 sticky top-0 z-20">
+        <header className="h-[76px] border-b border-white/[0.07] bg-[#FFFFFF]/90 backdrop-blur-xl flex items-center justify-between px-4 sm:px-6 lg:px-8 sticky top-0 z-20">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setSidebarOpen((value) => !value)}
-              className="h-9 w-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/5 transition"
+              className="h-9 w-9 rounded-lg flex items-center justify-center text-[#526174] hover:text-[#172033] hover:bg-white/5 transition"
             >
               {sidebarOpen ? (
                 <X size={19} />
@@ -233,11 +226,11 @@ export default function DoctorLayout({
             </button>
 
             <div className="hidden sm:block">
-              <p className="text-sm font-medium text-white">
+              <p className="text-sm font-medium text-[#172033]">
                 Clinical Workspace
               </p>
 
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-[#7B8794]">
                 ELO-04 Multimodal Screening Platform
               </p>
             </div>
@@ -246,7 +239,7 @@ export default function DoctorLayout({
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="hidden md:flex items-center gap-2 h-9 px-3 rounded-lg border border-white/[0.08] text-gray-600 hover:text-gray-300 hover:bg-white/[0.03] transition"
+              className="hidden md:flex items-center gap-2 h-9 px-3 rounded-lg border border-white/[0.08] text-[#7B8794] hover:text-[#334155] hover:bg-[#F8FAFC] transition"
             >
               <Search size={15} />
 
@@ -254,15 +247,15 @@ export default function DoctorLayout({
                 Search patients...
               </span>
 
-              <span className="ml-4 text-[10px] border border-white/10 rounded px-1.5 py-0.5">
+              <span className="ml-4 text-[10px] border border-[#E2E8F0] rounded px-1.5 py-0.5">
                 /
               </span>
             </button>
 
-            <div className="hidden sm:flex items-center gap-2 px-3 h-9 rounded-lg bg-emerald-400/5 border border-emerald-400/10">
-              <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="hidden sm:flex items-center gap-2 px-3 h-9 rounded-lg bg-[#16A34A]/5 border border-emerald-400/10">
+              <div className="h-1.5 w-1.5 rounded-full bg-[#16A34A] animate-pulse" />
 
-              <span className="text-xs text-emerald-400">
+              <span className="text-xs text-[#16A34A]">
                 AI Systems Online
               </span>
             </div>
@@ -274,29 +267,28 @@ export default function DoctorLayout({
               <div className="h-8 w-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
                 <UserRound
                   size={16}
-                  className="text-cyan-400"
+                  className="text-[#2563EB]"
                 />
               </div>
 
               <div className="hidden md:block text-left">
-                <p className="text-xs font-medium text-gray-200">
-                  Dr. Sarah Mitchell
+                <p className="text-xs font-medium text-[#334155]">
+                  Dr. Ajay Lad
                 </p>
 
-                <p className="text-[10px] text-gray-600">
+                <p className="text-[10px] text-[#7B8794]">
                   Clinical Specialist
                 </p>
               </div>
 
               <ChevronDown
                 size={14}
-                className="text-gray-600 hidden md:block"
+                className="text-[#7B8794] hidden md:block"
               />
             </button>
           </div>
         </header>
 
-        {/* Page content */}
         <main className="p-4 sm:p-6 lg:p-8 max-w-[1600px] mx-auto">
           {children}
         </main>

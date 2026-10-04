@@ -92,7 +92,7 @@ const timeline = [
     date: 'Today',
     time: '09:42',
     title: 'Patient record accessed',
-    description: 'Dr. Mitchell opened the clinical record.',
+    description: 'Dr. Ajay Lad opened the clinical record.',
     icon: UserRound,
   },
   {
@@ -127,17 +127,17 @@ function StatusBadge({
     stable: {
       label: 'Stable',
       className:
-        'bg-emerald-400/10 text-emerald-300 border-emerald-400/10',
+        'bg-[#16A34A]/10 text-[#16A34A] border-emerald-400/10',
     },
     monitoring: {
       label: 'Monitoring',
       className:
-        'bg-amber-400/10 text-amber-300 border-amber-400/10',
+        'bg-amber-400/10 text-[#526174] border-amber-400/10',
     },
     critical: {
       label: 'Critical',
       className:
-        'bg-red-400/10 text-red-300 border-red-400/10',
+        'bg-red-400/10 text-[#DC2626] border-red-400/10',
     },
   }
 
@@ -165,15 +165,15 @@ function SectionHeader({
   return (
     <div className="flex items-center gap-3 mb-5">
       <div className="h-9 w-9 rounded-lg bg-cyan-400/10 flex items-center justify-center">
-        <Icon size={17} className="text-cyan-400" />
+        <Icon size={17} className="text-[#2563EB]" />
       </div>
 
       <div>
-        <h2 className="font-semibold text-white">
+        <h2 className="font-semibold text-[#172033]">
           {title}
         </h2>
 
-        <p className="text-xs text-gray-600 mt-0.5">
+        <p className="text-xs text-[#7B8794] mt-0.5">
           {subtitle}
         </p>
       </div>
@@ -192,19 +192,19 @@ export default function PatientProfile({
       <button
         type="button"
         onClick={onBack}
-        className="inline-flex items-center gap-2 text-xs text-gray-500 hover:text-cyan-300 transition"
+        className="inline-flex items-center gap-2 text-xs text-[#526174] hover:text-[#2563EB] transition"
       >
         <ArrowLeft size={15} />
         Back to Patients
       </button>
 
       {/* Patient header */}
-      <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl overflow-hidden">
+      <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl overflow-hidden">
         <div className="p-5 sm:p-6">
           <div className="flex flex-col lg:flex-row lg:items-center gap-5">
             {/* Avatar */}
             <div className="h-20 w-20 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center shrink-0">
-              <span className="text-2xl font-semibold text-cyan-300">
+              <span className="text-2xl font-semibold text-[#2563EB]">
                 {patient.name
                   .split(' ')
                   .map((name) => name[0])
@@ -216,21 +216,21 @@ export default function PatientProfile({
             {/* Identity */}
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-3">
-                <h1 className="text-2xl font-semibold text-white">
+                <h1 className="text-2xl font-semibold text-[#172033]">
                   {patient.name}
                 </h1>
 
                 <StatusBadge status={patient.status} />
               </div>
 
-              <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3 text-xs text-gray-500">
+              <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3 text-xs text-[#526174]">
                 <span>{patient.id}</span>
                 <span>{patient.age} years old</span>
                 <span>{patient.gender}</span>
                 <span>Blood Group {patient.bloodGroup}</span>
               </div>
 
-              <p className="text-sm text-gray-400 mt-3">
+              <p className="text-sm text-[#526174] mt-3">
                 {patient.condition}
               </p>
             </div>
@@ -250,25 +250,27 @@ export default function PatientProfile({
         {/* Patient information strip */}
         <div className="grid grid-cols-1 sm:grid-cols-3 border-t border-white/[0.06]">
           <div className="p-4 sm:px-6 border-b sm:border-b-0 sm:border-r border-white/[0.06]">
-            <p className="text-[10px] uppercase tracking-wider text-gray-600">
+            <p className="text-[10px] uppercase tracking-wider text-[#7B8794]">
               Phone
             </p>
-            <p className="text-sm text-gray-300 mt-1">
+
+            <p className="text-sm text-[#334155] mt-1">
               {patient.phone}
             </p>
           </div>
 
           <div className="p-4 sm:px-6 border-b sm:border-b-0 sm:border-r border-white/[0.06]">
-            <p className="text-[10px] uppercase tracking-wider text-gray-600">
+            <p className="text-[10px] uppercase tracking-wider text-[#7B8794]">
               Email
             </p>
-            <p className="text-sm text-gray-300 mt-1 truncate">
+
+            <p className="text-sm text-[#334155] mt-1 truncate">
               {patient.email}
             </p>
           </div>
 
           <div className="p-4 sm:px-6">
-            <p className="text-[10px] uppercase tracking-wider text-gray-600">
+            <p className="text-[10px] uppercase tracking-wider text-[#7B8794]">
               Care Status
             </p>
 
@@ -281,75 +283,75 @@ export default function PatientProfile({
 
       {/* Clinical summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
-          <Heart size={19} className="text-red-400" />
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
+          <Heart size={19} className="text-[#DC2626]" />
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             72
           </p>
 
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-[#526174] mt-1">
             Resting heart rate
           </p>
 
-          <p className="text-[10px] text-emerald-400 mt-2">
+          <p className="text-[10px] text-[#16A34A] mt-2">
             Within expected range
           </p>
         </div>
 
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
           <Activity
             size={19}
-            className="text-cyan-400"
+            className="text-[#2563EB]"
           />
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             98%
           </p>
 
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-[#526174] mt-1">
             Oxygen saturation
           </p>
 
-          <p className="text-[10px] text-emerald-400 mt-2">
+          <p className="text-[10px] text-[#16A34A] mt-2">
             Latest recorded
           </p>
         </div>
 
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
           <FileText
             size={19}
             className="text-violet-400"
           />
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             14
           </p>
 
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-[#526174] mt-1">
             Clinical documents
           </p>
 
-          <p className="text-[10px] text-gray-600 mt-2">
+          <p className="text-[10px] text-[#7B8794] mt-2">
             Across patient history
           </p>
         </div>
 
-        <div className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+        <div className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
           <ScanLine
             size={19}
-            className="text-amber-400"
+            className="text-[#526174]"
           />
 
-          <p className="text-2xl font-semibold text-white mt-4">
+          <p className="text-2xl font-semibold text-[#172033] mt-4">
             8
           </p>
 
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-[#526174] mt-1">
             Investigations
           </p>
 
-          <p className="text-[10px] text-gray-600 mt-2">
+          <p className="text-[10px] text-[#7B8794] mt-2">
             3 within last 30 days
           </p>
         </div>
@@ -360,7 +362,7 @@ export default function PatientProfile({
         {/* Left column */}
         <div className="space-y-5">
           {/* Medical history */}
-          <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+          <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
             <SectionHeader
               icon={History}
               title="Medical History"
@@ -377,25 +379,25 @@ export default function PatientProfile({
                     <div className="absolute left-[5px] top-4 bottom-[-20px] w-px bg-white/[0.07]" />
                   )}
 
-                  <div className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full bg-cyan-400 border-2 border-[#0d1320] ring-1 ring-cyan-400/20" />
+                  <div className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full bg-cyan-400 border-2 border-[#E2E8F0] ring-1 ring-cyan-400/20" />
 
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                     <div>
-                      <p className="text-sm font-medium text-gray-200">
+                      <p className="text-sm font-medium text-[#334155]">
                         {item.title}
                       </p>
 
-                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                      <p className="text-xs text-[#526174] mt-1 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
 
-                    <span className="text-[10px] text-gray-700 whitespace-nowrap">
+                    <span className="text-[10px] text-[#7B8794] whitespace-nowrap">
                       {item.date}
                     </span>
                   </div>
 
-                  <span className="inline-flex mt-2 px-2 py-1 rounded-md bg-white/[0.03] text-[10px] text-gray-600">
+                  <span className="inline-flex mt-2 px-2 py-1 rounded-md bg-[#F8FAFC] text-[10px] text-[#7B8794]">
                     {item.type}
                   </span>
                 </div>
@@ -404,7 +406,7 @@ export default function PatientProfile({
           </section>
 
           {/* Investigations */}
-          <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl overflow-hidden">
+          <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl overflow-hidden">
             <div className="p-5 pb-4">
               <SectionHeader
                 icon={ScanLine}
@@ -417,7 +419,7 @@ export default function PatientProfile({
               {investigations.map((investigation) => (
                 <div
                   key={`${investigation.type}-${investigation.date}`}
-                  className="px-5 py-4 flex items-center gap-4 hover:bg-white/[0.02] transition"
+                  className="px-5 py-4 flex items-center gap-4 hover:bg-[#F8FAFC] transition"
                 >
                   <div className="h-10 w-10 rounded-xl bg-blue-400/10 flex items-center justify-center">
                     <ScanLine
@@ -427,28 +429,28 @@ export default function PatientProfile({
                   </div>
 
                   <div className="flex-1">
-                    <p className="text-sm text-gray-200">
+                    <p className="text-sm text-[#334155]">
                       {investigation.type}
                     </p>
 
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs text-[#7B8794] mt-1">
                       {investigation.date}
                     </p>
                   </div>
 
                   <div className="hidden sm:block text-right">
-                    <p className="text-xs text-emerald-400">
+                    <p className="text-xs text-[#16A34A]">
                       {investigation.status}
                     </p>
 
-                    <p className="text-[10px] text-gray-600 mt-1">
+                    <p className="text-[10px] text-[#7B8794] mt-1">
                       {investigation.result}
                     </p>
                   </div>
 
                   <ChevronRight
                     size={16}
-                    className="text-gray-700"
+                    className="text-[#7B8794]"
                   />
                 </div>
               ))}
@@ -459,7 +461,7 @@ export default function PatientProfile({
         {/* Right column */}
         <div className="space-y-5">
           {/* Prescriptions */}
-          <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+          <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
             <SectionHeader
               icon={Pill}
               title="Prescriptions"
@@ -474,11 +476,11 @@ export default function PatientProfile({
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-medium text-gray-200">
+                      <p className="text-sm font-medium text-[#334155]">
                         {prescription.medication}
                       </p>
 
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-[#526174] mt-1">
                         {prescription.dosage} •{' '}
                         {prescription.frequency}
                       </p>
@@ -487,8 +489,8 @@ export default function PatientProfile({
                     <span
                       className={`text-[10px] px-2 py-1 rounded-md ${
                         prescription.status === 'Active'
-                          ? 'bg-emerald-400/10 text-emerald-400'
-                          : 'bg-amber-400/10 text-amber-400'
+                          ? 'bg-[#16A34A]/10 text-[#16A34A]'
+                          : 'bg-amber-400/10 text-[#526174]'
                       }`}
                     >
                       {prescription.status}
@@ -500,7 +502,7 @@ export default function PatientProfile({
           </section>
 
           {/* Clinical notes */}
-          <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+          <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
             <SectionHeader
               icon={FileText}
               title="Clinical Notes"
@@ -509,16 +511,16 @@ export default function PatientProfile({
 
             <div className="rounded-xl bg-white/[0.025] border border-white/[0.05] p-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-wider text-gray-600">
+                <span className="text-[10px] uppercase tracking-wider text-[#7B8794]">
                   Latest Note
                 </span>
 
-                <span className="text-[10px] text-gray-700">
+                <span className="text-[10px] text-[#7B8794]">
                   18 Mar 2026
                 </span>
               </div>
 
-              <p className="text-sm text-gray-300 leading-relaxed mt-3">
+              <p className="text-sm text-[#334155] leading-relaxed mt-3">
                 Patient reports intermittent shortness of
                 breath during moderate exertion. No acute
                 symptoms at time of consultation. Previous
@@ -527,7 +529,7 @@ export default function PatientProfile({
 
               <button
                 type="button"
-                className="flex items-center gap-1.5 text-xs text-cyan-400 mt-4 hover:text-cyan-300"
+                className="flex items-center gap-1.5 text-xs text-[#2563EB] mt-4 hover:text-[#2563EB]"
               >
                 View all clinical notes
                 <ChevronRight size={13} />
@@ -541,7 +543,7 @@ export default function PatientProfile({
               <div className="h-9 w-9 rounded-lg bg-cyan-400/10 flex items-center justify-center shrink-0">
                 <ShieldCheck
                   size={17}
-                  className="text-cyan-400"
+                  className="text-[#2563EB]"
                 />
               </div>
 
@@ -550,7 +552,7 @@ export default function PatientProfile({
                   Patient-centric RAG ready
                 </p>
 
-                <p className="text-xs text-gray-500 leading-relaxed mt-1.5">
+                <p className="text-xs text-[#526174] leading-relaxed mt-1.5">
                   Historical records can be retrieved during
                   screening to provide relevant clinical
                   context and evidence traceability.
@@ -562,7 +564,7 @@ export default function PatientProfile({
       </div>
 
       {/* Timeline */}
-      <section className="bg-[#0d1320] border border-white/[0.07] rounded-2xl p-5">
+      <section className="bg-[#FFFFFF] border border-white/[0.07] rounded-2xl p-5">
         <SectionHeader
           icon={CalendarDays}
           title="Patient Timeline"
@@ -582,24 +584,24 @@ export default function PatientProfile({
                   <div className="h-8 w-8 rounded-lg bg-cyan-400/10 flex items-center justify-center">
                     <Icon
                       size={15}
-                      className="text-cyan-400"
+                      className="text-[#2563EB]"
                     />
                   </div>
 
-                  <span className="text-[10px] text-gray-700">
+                  <span className="text-[10px] text-[#7B8794]">
                     {event.time}
                   </span>
                 </div>
 
-                <p className="text-[10px] uppercase tracking-wider text-gray-600 mt-4">
+                <p className="text-[10px] uppercase tracking-wider text-[#7B8794] mt-4">
                   {event.date}
                 </p>
 
-                <p className="text-sm font-medium text-gray-300 mt-2">
+                <p className="text-sm font-medium text-[#334155] mt-2">
                   {event.title}
                 </p>
 
-                <p className="text-xs text-gray-600 leading-relaxed mt-1.5">
+                <p className="text-xs text-[#7B8794] leading-relaxed mt-1.5">
                   {event.description}
                 </p>
               </div>

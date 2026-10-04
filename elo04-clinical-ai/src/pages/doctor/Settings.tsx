@@ -51,15 +51,15 @@ export default function Settings() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-xs uppercase tracking-[0.18em] text-cyan-400">
+        <p className="text-xs uppercase tracking-[0.18em] text-[#2563EB]">
           Workspace
         </p>
 
-        <h1 className="mt-2 text-2xl font-semibold text-white">
+        <h1 className="mt-2 text-2xl font-semibold text-[#172033]">
           Clinical Settings
         </h1>
 
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-[#526174]">
           Configure AI screening behavior, notifications, and
           workspace preferences.
         </p>
@@ -86,19 +86,19 @@ export default function Settings() {
               onChange={() => toggle('autoLoadModels')}
             />
 
-            <div className="border-t border-white/5 pt-5">
+            <div className="border-t border-[#E2E8F0] pt-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-white">
+                  <p className="text-sm font-medium text-[#172033]">
                     Minimum confidence threshold
                   </p>
 
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs text-[#526174]">
                     Findings below this level require additional review.
                   </p>
                 </div>
 
-                <span className="text-sm font-semibold text-cyan-300">
+                <span className="text-sm font-semibold text-[#2563EB]">
                   {threshold}%
                 </span>
               </div>
@@ -158,18 +158,18 @@ export default function Settings() {
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+          <div className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
             <div className="flex items-center gap-3">
-              <div className="rounded-xl bg-cyan-500/10 p-3">
-                <UserRound className="h-5 w-5 text-cyan-400" />
+              <div className="rounded-xl bg-[#2563EB]/10 p-3">
+                <UserRound className="h-5 w-5 text-[#2563EB]" />
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-white">
-                  Dr. Sarah Mitchell
+                <p className="text-sm font-semibold text-[#172033]">
+                  Dr. Ajay Lad
                 </p>
 
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#526174]">
                   Clinical Specialist
                 </p>
               </div>
@@ -185,30 +185,30 @@ export default function Settings() {
 
           <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
             <div className="flex items-center gap-3">
-              <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+              <CheckCircle2 className="h-5 w-5 text-[#16A34A]" />
 
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-[#172033]">
                   Clinical AI Online
                 </p>
 
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-[#526174]">
                   All simulated services are operational.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
+          <div className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
             <div className="flex items-center gap-3">
-              <Database className="h-5 w-5 text-gray-500" />
+              <Database className="h-5 w-5 text-[#526174]" />
 
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-sm font-semibold text-[#172033]">
                   Demo Data
                 </p>
 
-                <p className="mt-1 text-xs leading-5 text-gray-500">
+                <p className="mt-1 text-xs leading-5 text-[#526174]">
                   Patient records, model outputs, evidence, and
                   audit events are simulated for the ELO-04 prototype.
                 </p>
@@ -218,13 +218,13 @@ export default function Settings() {
 
           <button
             onClick={saveSettings}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#2563EB] px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-[#1D4ED8]"
           >
             <Save className="h-4 w-4" />
             Save Preferences
           </button>
 
-          <div className="flex items-center gap-2 rounded-xl border border-white/5 bg-white/[0.02] p-4 text-xs text-gray-500">
+          <div className="flex items-center gap-2 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 text-xs text-[#526174]">
             <Lock className="h-4 w-4 shrink-0" />
             Demo environment — no real patient data is stored.
           </div>
@@ -246,18 +246,18 @@ function SettingsCard({
   children: React.ReactNode
 }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-[#0b1120] p-5">
-      <div className="flex items-start gap-3 border-b border-white/5 pb-5">
-        <div className="rounded-xl bg-cyan-500/10 p-2.5">
-          <Icon className="h-5 w-5 text-cyan-400" />
+    <section className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+      <div className="flex items-start gap-3 border-b border-[#E2E8F0] pb-5">
+        <div className="rounded-xl bg-[#2563EB]/10 p-2.5">
+          <Icon className="h-5 w-5 text-[#2563EB]" />
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold text-white">
+          <h2 className="text-sm font-semibold text-[#172033]">
             {title}
           </h2>
 
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-[#526174]">
             {description}
           </p>
         </div>
@@ -284,11 +284,11 @@ function SettingToggle({
   return (
     <div className="flex items-center justify-between gap-5 py-5">
       <div>
-        <p className="text-sm font-medium text-gray-200">
+        <p className="text-sm font-medium text-[#334155]">
           {label}
         </p>
 
-        <p className="mt-1 max-w-xl text-xs leading-5 text-gray-500">
+        <p className="mt-1 max-w-xl text-xs leading-5 text-[#526174]">
           {description}
         </p>
       </div>
@@ -297,7 +297,7 @@ function SettingToggle({
         onClick={onChange}
         aria-label={label}
         className={`relative h-6 w-11 shrink-0 rounded-full transition ${
-          enabled ? 'bg-cyan-500' : 'bg-gray-700'
+          enabled ? 'bg-[#2563EB]' : 'bg-gray-700'
         }`}
       >
         <span
@@ -318,9 +318,9 @@ function InfoRow({
   value: string
 }) {
   return (
-    <div className="flex justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
-      <span className="text-gray-600">{label}</span>
-      <span className="font-medium text-gray-300">{value}</span>
+    <div className="flex justify-between border-b border-[#E2E8F0] pb-3 last:border-0 last:pb-0">
+      <span className="text-[#7B8794]">{label}</span>
+      <span className="font-medium text-[#334155]">{value}</span>
     </div>
   )
 }
